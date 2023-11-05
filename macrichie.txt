@@ -1,0 +1,5 @@
+1. Rich Burger,7.99
+2. Rich Chicken,5.97
+3. Rich Fries,3.19
+4. Caeser Salad,4.99
+5. Dr. Bolt Pop,2.50

@@ -1,0 +1,5 @@
+1. Mary Burger,6.99
+2. Mary Chicken,4.23
+3. Mary Fries,2.50
+4. Italian Salad,5.00
+5. Dr. Bolt Pop,1.50

@@ -1,0 +1,5 @@
+1. Prince Burger,8.25
+2. Prince Chicken,5.85
+3. Prince Fries,2.77
+4. Greek Salad,3.96
+5. Dite Pop,3.00
