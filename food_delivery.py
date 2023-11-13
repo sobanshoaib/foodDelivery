@@ -9,8 +9,8 @@ Food Delivery
 food delivery, that sells the restaurants MacScams, Burger Prince, and Mary White
 whichever location they select, the menu would be displayed and the cost
 
-each menu would have the items with numbers. the person will click on a food, then it will say quantity how much. once it is done, the menu will
 be displayed again. option to checkout will also appear
+each menu would have the items with numbers. the person will click on a food, then it will say quantity how much. once it is done, the menu will
 
 cost provided, along with calculations showing taxes
 
