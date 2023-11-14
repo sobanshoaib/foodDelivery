@@ -2,11 +2,6 @@
 Soban Shoaib
 Food Delivery
 '''
-'''
-just making sure this works
-
-'''
-
 
 '''
 food delivery, that sells the restaurants MacScams, Burger Prince, and Mary White
@@ -73,7 +68,10 @@ def option_one(file):
 
     return food_choice
 
-def option_one_subsection(choice, file):
+def cost_care_one(choice, file):
+    '''
+    Whatver a menu item a person would select, here the cost will be taken care of, and then be displayed later
+    '''
     
     cost = [] # where all the costs will go
 
@@ -87,6 +85,9 @@ def option_one_subsection(choice, file):
     return cost
 
 def option_one_decision(first, options, file_one):
+    '''
+    Corresponding result to selected option from menu item
+    '''
     
     isValid = False
     while not isValid:
@@ -94,7 +95,7 @@ def option_one_decision(first, options, file_one):
                 print('Goodbye!')
                 isValid = True
             elif first in options:
-                get = option_one_subsection(first, file_one) # the list which contains the corresponding price of the menu item
+                get = cost_care_one(first, file_one) # the list which contains the corresponding price of the menu item
                 print(get)
                 isValid = True
             elif first not in options:
@@ -102,21 +103,27 @@ def option_one_decision(first, options, file_one):
 
 
 def option_two(file):
+    '''
+    Display the menu for restaurant 2 and select choice
+    '''
 
     print('Menu for Burger Prince:')
     print()
  
     for line in file:
-        new = line.strip().split(',')
+        new = line.strip().split(',') # cut into pieces
         food = new[0]
         cost = new[1]
-        print(f'{food:<17} = ${cost:^5}')
+        print(f'{food:<17} = ${cost:^5}') # proper formatting
 
     food_choice = input('Select number you would like to order, or press q to quit: ')
 
     return food_choice
 
-def option_two_subsection(choice, file):
+def cost_care_two(choice, file):
+    '''
+    Whatver a menu item a person would select, here the cost will be taken care of, and then be displayed later
+    '''
     
     cost = [] # where all the costs will go
 
@@ -130,6 +137,9 @@ def option_two_subsection(choice, file):
     return cost
 
 def option_two_decision(second, options, file_two):
+    '''
+    Corresponding result to selected option from menu item
+    '''
 
     isValidTwo = False
     while not isValidTwo:
@@ -137,29 +147,34 @@ def option_two_decision(second, options, file_two):
             print('Peace out!')
             isValidTwo = True
         elif second in options:
-            get_two = option_two_subsection(second, file_two) # the list which contains the corresponding price of the menu item
+            get_two = cost_care_two(second, file_two) # the list which contains the corresponding price of the menu item
             print(get_two)
             isValidTwo = True
         elif second not in options:
             second = input('please try again: ') # keep re-trying until appropriate option selected
 
 def option_three(file):
+    '''
+    Display the menu for restuarant 3 and select choice
+    '''
     
     print('Menu for Mary White:')
     print()
  
     for line in file:
-        new = line.strip().split(',')
+        new = line.strip().split(',') # cut into pieces
         food = new[0]
         cost = new[1]
-        print(f'{food:<16} = ${cost:^5}')
+        print(f'{food:<16} = ${cost:^5}') # proper formatting
 
     food_choice = input('Select number you would like to order, or press q to quit: ')
 
     return food_choice
 
-def option_three_subsection(choice, file):
-    
+def cost_care_three(choice, file):
+    '''
+    Whatver a menu item a person would select, here the cost will be taken care of, and then be displayed later
+    '''
     cost = [] # where all the costs will go
 
     for line in file:
@@ -172,6 +187,9 @@ def option_three_subsection(choice, file):
     return cost
 
 def option_three_decision(third, options, file_three):
+    '''
+    Corresponding result to selected option from menu item
+    '''
 
     isValidThree = False
     while not isValidThree:
@@ -179,13 +197,11 @@ def option_three_decision(third, options, file_three):
             print('See you next time!')
             isValidThree = True
         elif third in options:
-            get_three = option_three_subsection(third, file_three) # the list which contains the corresponding price of the menu item
+            get_three = cost_care_three(third, file_three) # the list which contains the corresponding price of the menu item
             print(get_three)
             isValidThree = True
         elif third not in options:
             third = input('please try again: ') # keep re-trying until appropriate option selected
-
-
 
 
 def main():
@@ -199,11 +215,11 @@ def main():
         first = option_one(files[0])
         option_one_decision(first, options, files[0])
 
-    elif restaurant_choice == 2:
+    elif restaurant_choice == 2: # if the user selects restaurant 2
         second = option_two(files[1])
         option_two_decision(second, options, files[1])
 
-    elif restaurant_choice == 3:
+    elif restaurant_choice == 3: # if the user selects restuarant 3
         third = option_three(files[2])
         option_three_decision(third, options, files[2])
 
