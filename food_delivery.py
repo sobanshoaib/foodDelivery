@@ -6,10 +6,8 @@ Food Delivery
 '''
 food delivery, that sells the restaurants MacScams, Burger Prince, and Mary White
 whichever location they select, the menu would be displayed and the cost
-
 be displayed again. option to checkout will also appear
 each menu would have the items with numbers. the person will click on a food, then it will say quantity how much. once it is done, the menu will
-
 cost provided, along with calculations showing taxes
 
 '''
@@ -73,16 +71,16 @@ def cost_care_one(choice, file):
     Whatver a menu item a person would select, here the cost will be taken care of, and then be displayed later
     '''
     
-    cost = [] # where all the costs will go
+    cost = '' # where all the costs will go
 
     for line in file:
         cut = line.strip().split('.', 1) # split the line
         if choice == cut[0]: # if the user choice matches the number of the menu item
             cut_two = cut[1].strip().split(',')
             money = float(cut_two[1])
-            cost.append(money)
+            cost += str(money)
 
-    return cost
+    return float(cost)
 
 def option_one_decision(first, options, file_one):
     '''
@@ -125,16 +123,16 @@ def cost_care_two(choice, file):
     Whatver a menu item a person would select, here the cost will be taken care of, and then be displayed later
     '''
     
-    cost = [] # where all the costs will go
+    cost = '' # where all the costs will go
 
     for line in file:
         cut = line.strip().split('.', 1) # split the line
         if choice == cut[0]: # if the user choice matches the number of the menu item
             cut_two = cut[1].strip().split(',')
             money = float(cut_two[1])
-            cost.append(money)
+            cost += str(money)
 
-    return cost
+    return float(cost)
 
 def option_two_decision(second, options, file_two):
     '''
@@ -175,16 +173,16 @@ def cost_care_three(choice, file):
     '''
     Whatver a menu item a person would select, here the cost will be taken care of, and then be displayed later
     '''
-    cost = [] # where all the costs will go
+    cost = '' # where all the costs will go
 
     for line in file:
         cut = line.strip().split('.', 1) # split the line
         if choice == cut[0]: # if the user choice matches the number of the menu item
             cut_two = cut[1].strip().split(',')
             money = float(cut_two[1])
-            cost.append(money)
+            cost += str(money)
 
-    return cost
+    return float(cost)
 
 def option_three_decision(third, options, file_three):
     '''
@@ -197,11 +195,34 @@ def option_three_decision(third, options, file_three):
             print('See you next time!')
             isValidThree = True
         elif third in options:
-            get_three = cost_care_three(third, file_three) # the list which contains the corresponding price of the menu item
-            print(get_three)
+            cost_of_item = cost_care_three(third, file_three) # the list which contains the corresponding price of the menu item            
             isValidThree = True
         elif third not in options:
             third = input('please try again: ') # keep re-trying until appropriate option selected
+    quantity = int(input('Enter the amount of this item you would like: '))
+    cost_after_amount = cost_of_item * quantity
+    print()
+    print(f'This equates to ${cost_after_amount}. Please select one of the following options.')
+    
+    choices= [1, 'c', 'q']
+    print('To continue ordering please select 1 to go to the list of retaurants. To finish ordering and go to checkout please select c. To quit altogether please select q')
+    select = input('>')
+    
+    isValid = False
+    while not isValid:
+        if select == choices[0]:
+            display_restaurants()
+            isValid = True
+        elif select == choices[1]:
+            pass
+            isValid = True
+        elif select == choices[2]:
+            print('Goodbye')
+            isValid = True
+        else:
+            print('Please try again and select the appropriate choice')
+
+
 
 
 def main():
