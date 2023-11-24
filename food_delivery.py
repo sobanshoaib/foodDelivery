@@ -89,15 +89,15 @@ def option_one_decision(first, options, file_one):
     
     isValid = False
     while not isValid:
-            if first.lower() == 'q': # q to exit the program
-                print('Goodbye!')
-                isValid = True
-            elif first in options:
-                get = cost_care_one(first, file_one) # the list which contains the corresponding price of the menu item
-                print(get)
-                isValid = True
-            elif first not in options:
-                first = input('please try again: ') # keep re-trying until appropriate option selected
+        if first.lower() == 'q': # q to exit the program
+            print('Goodbye!')
+            isValid = True
+        elif first in options:
+            get = cost_care_one(first, file_one) # the list which contains the corresponding price of the menu item
+            print(get)
+            isValid = True
+        elif first not in options:
+            first = input('please try again: ') # keep re-trying until appropriate option selected
 
 
 def option_two(file):
@@ -184,7 +184,7 @@ def cost_care_three(choice, file):
 
     return float(cost)
 
-def option_three_decision(third, options, file_three):
+def option_three_decision(third, options, file_three, symbol):
     '''
     Corresponding result to selected option from menu item
     '''
@@ -206,17 +206,17 @@ def option_three_decision(third, options, file_three):
     
     choices= [1, 'c', 'q']
     print('To continue ordering please select 1 to go to the list of retaurants. To finish ordering and go to checkout please select c. To quit altogether please select q')
-    select = input('>')
     
     isValid = False
     while not isValid:
-        if select == choices[0]:
-            display_restaurants()
+        select = input('>')
+        if select == '1':
+            main()
             isValid = True
-        elif select == choices[1]:
+        elif select == 'c':
             pass
             isValid = True
-        elif select == choices[2]:
+        elif select.lower() == choices[2]:
             print('Goodbye')
             isValid = True
         else:
@@ -242,7 +242,7 @@ def main():
 
     elif restaurant_choice == 3: # if the user selects restuarant 3
         third = option_three(files[2])
-        option_three_decision(third, options, files[2])
+        option_three_decision(third, options, files[2], symbol)
 
 
 if __name__ == '__main__':
