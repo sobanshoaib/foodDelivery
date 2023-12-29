@@ -93,11 +93,37 @@ def option_one_decision(first, options, file_one):
             print('Goodbye!')
             isValid = True
         elif first in options:
-            get = cost_care_one(first, file_one) # the list which contains the corresponding price of the menu item
-            print(get)
+            cost_of_item_first = cost_care_one(first, file_one) # the list which contains the corresponding price of the menu item
+            #print(get)
             isValid = True
         elif first not in options:
             first = input('please try again: ') # keep re-trying until appropriate option selected
+
+    quantity = int(input('Enter the amount of this item you would like: '))
+    cost_after_amount = cost_of_item_first * quantity
+    print()
+    print(f'This equates to ${cost_after_amount}. Please select one of the following options.')
+
+
+    choices= [1, 'c', 'q'] 
+    print('To continue ordering please select 1 to go to the list of retaurants. To finish ordering and go to checkout please select c. To quit altogether please select q')
+    
+    isValid = False
+    while not isValid:
+        select = input('>')
+        if select == '1':
+            main() # whole process restarts
+            isValid = True
+        elif select == 'c':
+            shopping_cart(cost_after_amount)
+            isValid = True
+        elif select.lower() == choices[2]:
+            print('Goodbye')
+            isValid = True
+        else:
+            print('Please try again and select the appropriate choice')
+
+    return cost_after_amount
 
 
 def option_two(file):
@@ -145,11 +171,38 @@ def option_two_decision(second, options, file_two):
             print('Peace out!')
             isValidTwo = True
         elif second in options:
-            get_two = cost_care_two(second, file_two) # the list which contains the corresponding price of the menu item
-            print(get_two)
+            cost_of_item_second = cost_care_two(second, file_two) # the list which contains the corresponding price of the menu item
+
             isValidTwo = True
         elif second not in options:
             second = input('please try again: ') # keep re-trying until appropriate option selected
+
+    quantity = int(input('Enter the amount of this item you would like: '))
+    cost_after_amount = cost_of_item_second * quantity
+    print()
+    print(f'This equates to ${cost_after_amount}. Please select one of the following options.')
+
+    choices= [1, 'c', 'q'] 
+    print('To continue ordering please select 1 to go to the list of retaurants. To finish ordering and go to checkout please select c. To quit altogether please select q')
+    
+    isValid = False
+    while not isValid:
+        select = input('>')
+        if select == '1':
+            main()
+            isValid = True
+        elif select == 'c':
+            shopping_cart(cost_after_amount)
+            isValid = True
+        elif select.lower() == choices[2]:
+            print('Goodbye')
+            isValid = True
+        else:
+            print('Please try again and select the appropriate choice')
+
+    return cost_after_amount
+
+
 
 def option_three(file):
     '''
@@ -204,7 +257,7 @@ def option_three_decision(third, options, file_three, symbol):
     print()
     print(f'This equates to ${cost_after_amount}. Please select one of the following options.')
     
-    choices= [1, 'c', 'q']
+    choices= [1, 'c', 'q'] 
     print('To continue ordering please select 1 to go to the list of retaurants. To finish ordering and go to checkout please select c. To quit altogether please select q')
     
     isValid = False
@@ -214,7 +267,7 @@ def option_three_decision(third, options, file_three, symbol):
             main()
             isValid = True
         elif select == 'c':
-            pass
+            shopping_cart(cost_after_amount)
             isValid = True
         elif select.lower() == choices[2]:
             print('Goodbye')
@@ -223,6 +276,25 @@ def option_three_decision(third, options, file_three, symbol):
             print('Please try again and select the appropriate choice')
 
 
+    return cost_after_amount
+
+
+def shopping_cart(cost1, cost2, cost3):
+    
+    # cart = []
+    # cart.append(cost)
+
+    first = 0
+    second = 0
+    third = 0
+
+    first += cost1
+    second += cost2
+    third += cost3
+
+    total = first+second+third
+
+    return f'${total}'
 
 
 def main():
@@ -234,16 +306,22 @@ def main():
 
     if restaurant_choice == 1: # if the user select restaurant 1
         first = option_one(files[0])
-        option_one_decision(first, options, files[0])
+        cost_first = option_one_decision(first, options, files[0])
+        #print(shopping_cart(cost_first))
 
     elif restaurant_choice == 2: # if the user selects restaurant 2
         second = option_two(files[1])
-        option_two_decision(second, options, files[1])
+        cost_second = option_two_decision(second, options, files[1])
+        #print(shopping_cart(cost_second))
 
     elif restaurant_choice == 3: # if the user selects restuarant 3
         third = option_three(files[2])
-        option_three_decision(third, options, files[2], symbol)
+        cost_third = option_three_decision(third, options, files[2], symbol)
+        #print(shopping_cart(cost_third))
 
+    shopping_cart(cost_first, cost_second, cost_third)
 
+    
 if __name__ == '__main__':
     main()
+
