@@ -12,6 +12,11 @@ cost provided, along with calculations showing taxes
 
 '''
 
+
+from money_adding import Money
+
+cart = []
+
 def display_restaurants(symbol):
     '''
     Main menu that displayes restaurants
@@ -115,7 +120,8 @@ def option_one_decision(first, options, file_one):
             main() # whole process restarts
             isValid = True
         elif select == 'c':
-            shopping_cart(cost_after_amount)
+            cart.adding(cost_after_amount)
+            shopping_cart()
             isValid = True
         elif select.lower() == choices[2]:
             print('Goodbye')
@@ -192,7 +198,9 @@ def option_two_decision(second, options, file_two):
             main()
             isValid = True
         elif select == 'c':
-            shopping_cart(cost_after_amount)
+            cart.adding(cost_after_amount)
+            shopping_cart()
+            #print(cart)
             isValid = True
         elif select.lower() == choices[2]:
             print('Goodbye')
@@ -267,7 +275,9 @@ def option_three_decision(third, options, file_three, symbol):
             main()
             isValid = True
         elif select == 'c':
-            shopping_cart(cost_after_amount)
+            cart.adding(cost_after_amount)
+            shopping_cart()
+            #print(cart)
             isValid = True
         elif select.lower() == choices[2]:
             print('Goodbye')
@@ -279,22 +289,13 @@ def option_three_decision(third, options, file_three, symbol):
     return cost_after_amount
 
 
-def shopping_cart(cost1, cost2, cost3):
+def shopping_cart():
     
-    # cart = []
-    # cart.append(cost)
+    return cart
 
-    first = 0
-    second = 0
-    third = 0
 
-    first += cost1
-    second += cost2
-    third += cost3
 
-    total = first+second+third
-
-    return f'${total}'
+    #print(f'${total}')
 
 
 def main():
@@ -319,9 +320,15 @@ def main():
         cost_third = option_three_decision(third, options, files[2], symbol)
         #print(shopping_cart(cost_third))
 
-    shopping_cart(cost_first, cost_second, cost_third)
+    #shopping_cart()
+    
+
+   
 
     
 if __name__ == '__main__':
     main()
+
+
+
 
