@@ -298,27 +298,34 @@ def main():
     
     cart = Money()
     valid = False
-    while not valid:
-        symbol = '*'
-        restaurant_choice = display_restaurants(symbol)   
+    symbol = '*'
+    restaurant_choice = display_restaurants(symbol) 
+
+    while not valid:  
         files = read_files()
         options = ['1','2','3', '4', '5', 'q']
         cost_first = cost_second = cost_third = None
 
         if restaurant_choice == 1: # if the user select restaurant 1
             first = option_one(files[0])
+            if first == 'q':
+                break
             cost_first = option_one_decision(first, options, files[0], cart)
             valid = True
 
 
         elif restaurant_choice == 2: # if the user selects restaurant 2
             second = option_two(files[1])
+            if second == 'q':
+                break
             cost_second = option_two_decision(second, options, files[1], cart)
             valid = True
 
 
         elif restaurant_choice == 3: # if the user selects restuarant 3
             third = option_three(files[2])
+            if third == 'q':
+                break
             cost_third = option_three_decision(third, options, files[2], cart)
             valid = True
 
